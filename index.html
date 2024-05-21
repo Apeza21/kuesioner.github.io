@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuesioner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kuesioner</h1>
+        <form id="questionnaireForm">
+            <div class="question">
+                <label for="question1">Pertanyaan 1: Apakah Anda puas dengan layanan kami?</label><br>
+                <input type="radio" name="question1" value="yes"> Ya<br>
+                <input type="radio" name="question1" value="no"> Tidak
+            </div>
+            <div class="question">
+                <label for="question2">Pertanyaan 2: Apakah Anda akan merekomendasikan kami?</label><br>
+                <input type="radio" name="question2" value="yes"> Ya<br>
+                <input type="radio" name="question2" value="no"> Tidak
+            </div>
+            <div class="question">
+                <label for="question3">Pertanyaan 3: Apakah Anda akan menggunakan layanan kami lagi?</label><br>
+                <input type="radio" name="question3" value="yes"> Ya<br>
+                <input type="radio" name="question3" value="no"> Tidak
+            </div>
+            <button type="button" onclick="calculateResults()">Submit</button>
+        </form>
+        <div id="results" class="results">
+            <!-- Hasil akan ditampilkan di sini -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
