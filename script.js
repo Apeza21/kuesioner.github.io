@@ -1,29 +1,20 @@
-function calculateResults() {
-    const form = document.getElementById('questionnaireForm');
-    const resultsDiv = document.getElementById('results');
-
-    let totalQuestions = 3;
-    let yesAnswers = 0;
-
+function calculateScore() {
+    const form = document.getElementById('quizForm');
     const formData = new FormData(form);
-    formData.forEach((value, key) => {
-        if (value === 'yes') {
-            yesAnswers++;
-        }
-    });
+    let score = 0;
 
-    let percentage = (yesAnswers / totalQuestions) * 100;
-    let message = '';
-
-    if (percentage === 100) {
-        message = 'Semua respon Anda positif! Terima kasih atas dukungan Anda!';
-    } else if (percentage >= 66.67) {
-        message = 'Sebagian besar respon Anda positif. Terima kasih atas masukan Anda!';
-    } else if (percentage >= 33.33) {
-        message = 'Sebagian besar respon Anda negatif. Kami akan berusaha lebih baik lagi!';
-    } else {
-        message = 'Semua respon Anda negatif. Kami mohon maaf dan akan melakukan perbaikan!';
+    for (const value of formData.values()) {
+        score += parseInt(value);
     }
 
-    resultsDiv.innerHTML = `<p>${message}</p>`;
+    let resultText;
+    if (score >= 71) {
+        resultText = "Anda memiliki predikat: Sangat Baik";
+    } else if (score >= 31) {
+        resultText = "Anda memiliki predikat: Cukup";
+    } else {
+        resultText = "Anda memiliki predikat: Kurang";
+    }
+
+    document.getElementById('result').textContent = `Total Skor: ${score}. ${resultText}`;
 }
