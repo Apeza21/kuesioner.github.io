@@ -1,20 +1,24 @@
-function calculateScore() {
-    const form = document.getElementById('quizForm');
-    const formData = new FormData(form);
+document.getElementById('kuisionerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
     let score = 0;
+    const totalQuestions = 2;
 
-    for (const value of formData.values()) {
-        score += parseInt(value);
-    }
+    const question1 = parseInt(document.getElementById('question1').value);
+    const question2 = parseInt(document.getElementById('question2').value);
 
-    let resultText;
-    if (score >= 71) {
-        resultText = "Anda memiliki predikat: Sangat Baik";
-    } else if (score >= 31) {
-        resultText = "Anda memiliki predikat: Cukup";
-    } else {
-        resultText = "Anda memiliki predikat: Kurang";
-    }
+    if (!isNaN(question1)) score += question1;
+    if (!isNaN(question2)) score += question2;
 
-    document.getElementById('result').textContent = `Total Skor: ${score}. ${resultText}`;
-}
+    const maxScore = totalQuestions * 3;
+    const percentage = (score / maxScore) * 100;
+
+    const scoreBar = document.getElementById('scoreBar');
+    scoreBar.innerHTML = `<div style="width: ${percentage}%"></div>`;
+
+    const scorePercentage = document.getElementById('scorePercentage');
+    scorePercentage.textContent = `Skor Anda: ${percentage.toFixed(2)}%`;
+
+    const result = document.getElementById('result');
+    result.style.display = 'block';
+});
